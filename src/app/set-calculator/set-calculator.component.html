@@ -1,0 +1,17 @@
+<div>
+    <h1>Set Calculator</h1>
+    <label for="workingWeight">Working Weight: </label>
+    <input id="workingWeight" type="number" [formControl]="workingWeight">
+
+    <label for="reps">Reps: </label>
+    <input id="reps" type="number" [formControl]="reps">
+
+    <hr>
+
+    <ul class="set-reps">
+        <li>Warm-up Set 1: Barbell/light-weight, 15 reps</li>
+        <li>Warm-up Set 2: {{ calcSet(2, workingWeight) }}, for {{ calcReps(2, reps)}} reps</li>
+        <li>Warm-up Set 3: {{ calcSet(3, workingWeight) }}, for {{ calcReps(3, reps)}}</li>
+        <li>Warm-up Set 4: {{ calcSet(4, workingWeight) }}, for {{ calcReps(4, reps)}}</li>
+    </ul>
+</div>
