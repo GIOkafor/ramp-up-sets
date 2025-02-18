@@ -1,17 +1,64 @@
-<div>
-    <h1>Set Calculator</h1>
-    <label for="workingWeight">Working Weight: </label>
-    <input id="workingWeight" type="number" [formControl]="workingWeight">
+<div class="container">
+    <div class="card shadow-sm p-4 mt-4">
+        <h1 class="text-center mb-4">Set Calculator</h1>
+        <form>
+            <div class="mb-3">
+                <label for="workingWeight" class="form-label">Working Weight </label>
+                <input id="workingWeight" class="form-control" type="number" [formControl]="workingWeight" placeholder="Enter weight">
+            </div>
+            <div class="mb-3">
+                <label for="reps" class="form-label">Reps </label>
+                <input id="reps" class="form-control" type="number" [formControl]="reps" placeholder="Enter reps">
+            </div>
 
-    <label for="reps">Reps: </label>
-    <input id="reps" type="number" [formControl]="reps">
+            <div class="form-switch mt-3">
+                <label class="form-check-label">Kilograms (kg)</label>
+                <input class="form-check-input" type="checkbox" id="unitToggle" [formControl]="unit">
+                <label class="form-check-label">Pounds (lbs)</label>
+            </div>
+            <!-- <button type="submit" class="btn btn-primary w-100">Calculate</button> -->
+        </form>
 
-    <hr>
+        <div class="mt-4">
+            <h5>Warm-up Sets</h5>
+            <ul class="list-group">
+                <li class="list-group-item">Set 1: Barbell/light-weight, 15 reps</li>
+                <li class="list-group-item">Set 2: {{ calcSet(2, workingWeight) }} {{ unit.value ? "pounds" : "kilograms"}}, for {{ calcReps(2, reps)}} reps</li>
+                <li class="list-group-item">Set 3: {{ calcSet(3, workingWeight) }} {{ unit.value ? "pounds" : "kilograms"}}, for {{ calcReps(3, reps)}} reps</li>
+                <li class="list-group-item">Set 4: {{ calcSet(4, workingWeight) }} {{ unit.value ? "pounds" : "kilograms"}}, for {{ calcReps(4, reps)}} rep</li>
+            </ul>
+        </div>
+    </div>
 
-    <ul class="set-reps">
-        <li>Warm-up Set 1: Barbell/light-weight, 15 reps</li>
-        <li>Warm-up Set 2: {{ calcSet(2, workingWeight) }}, for {{ calcReps(2, reps)}} reps</li>
-        <li>Warm-up Set 3: {{ calcSet(3, workingWeight) }}, for {{ calcReps(3, reps)}}</li>
-        <li>Warm-up Set 4: {{ calcSet(4, workingWeight) }}, for {{ calcReps(4, reps)}}</li>
-    </ul>
+    <div class="card shadow-sm p-4 mt-4">
+        <h4 class="text-center">How to Use the App</h4>
+        <ol>
+            <li><strong>Enter Your Working Weight:</strong> Input the weight you plan to lift.</li>
+            <li><strong>Enter Reps:</strong> Specify how many reps you will perform for your working set.</li>
+            <li><strong>Select Weight Unit:</strong> Use the toggle to choose between kilograms (kg) and pounds (lbs).</li>
+            <!-- <li><strong>Click "Calculate":</strong> Press the button to generate your warm-up sets.</li> -->
+            <li><strong>Follow the Warm-Up Plan:</strong> Perform the listed sets to prepare for your workout.</li>
+        </ol>
+    </div>
+
+    <!-- Explanation Section -->
+    <div class="card shadow-sm p-4 mt-3">
+        <h4 class="text-center">How It Works</h4>
+        <p>
+            This app helps you calculate the correct weights to use for warm-up sets, ensuring you maximize strength output while reducing the risk of injury.
+        </p>
+        <p>    
+            By gradually increasing the load, you prepare your muscles and nervous system for your working set, improving performance and efficiency in the gym.
+        </p>
+    </div>
+
+    <div class="card shadow-sm p-4 mt-3">
+        <h4 class="text-center">Benefits of Ramp-Up Sets</h4>
+        <ul>
+            <li><strong>Maximize Strength Output:</strong> Proper warm-ups prepare your body for heavier lifts, enhancing performance.</li>
+            <li><strong>Prevent Injury:</strong> Gradual loading reduces strain on joints and muscles.</li>
+            <li><strong>Improve Muscle Activation:</strong> Activates the right muscles for optimal movement and power.</li>
+            <li><strong>Save Time:</strong> Efficient warm-ups get you ready faster without unnecessary fatigue.</li>
+        </ul>
+    </div>
 </div>

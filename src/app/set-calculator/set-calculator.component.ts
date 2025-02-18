@@ -10,11 +10,12 @@ import { ReactiveFormsModule, FormControl } from '@angular/forms';
   styleUrl: './set-calculator.component.scss'
 })
 export class SetCalculatorComponent {
-  workingWeight = new FormControl<number>(0);
-  reps = new FormControl(0);
+  workingWeight = new FormControl<number|string>('Enter weight');
+  reps = new FormControl<number|string>('Enter reps');
+  unit = new FormControl<boolean>(false);
 
   calcSet(set: number, workingWeight: FormControl){
-    const weight = workingWeight.value;
+    const weight = typeof(workingWeight.value) === 'string' ? 0 : workingWeight.value;
 
     if(set == 2)
       return ((weight * 50)/100);
@@ -27,7 +28,7 @@ export class SetCalculatorComponent {
   }
 
   calcReps(set: number, reps: FormControl){
-    const repTargets = reps.value || 0;
+    const repTargets = typeof(reps.value) === 'string' ? 0 : reps.value;
 
     if(set == 2)
       return repTargets;
